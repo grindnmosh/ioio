@@ -1,0 +1,220 @@
+/*
+
+Robert Warren
+Term 1304
+Mobile Interface and Usability (MIU)
+I Owe, I Owe * Bill List
+
+Dropbox: https://www.dropbox.com/sh/03yhmwxv5pmms41/4XEl9oEfZ8
+Github: https://github.com/grindnmosh/Warren_Robert_1304_MIU.git
+URL: http://grind-design.com
+
+*/
+
+html {
+    background-color: #B7B7B6; 
+}
+body {
+	font-family: Arial, Helvetica, san-seriff;
+	width: 545px;
+	margin: 20 40;
+	padding: 10px; 
+	color: black;
+}
+h1 { 
+	text-align: center;
+}
+h2 { 
+	text-align: center;
+	margin: 20px;
+	border: 2px solid black;
+}
+h3 { 
+	text-align: center; 
+}
+h4 {
+	text-align: center;
+}
+form {
+	color: blue;
+	margin: 20px;
+	border: 2px solid black;
+	background: white;
+}
+.pageMatch{
+	color: blue
+}
+legend {
+	margin: 20px;
+	border: 2px solid black;
+}
+fieldset {
+	margin: 20px;
+	border: 2px solid blue;
+}
+p { 
+	text-align: center; 
+}
+ul {
+	margin-right: 40px;
+}
+
+li { 
+	font-family: times;
+	line-height: 2em;
+}
+.billImg {
+	align: left;
+	width: 100px;
+	margin: 40px 0px 40px 0px;
+	border: 2px solid blue;
+}
+form fieldset ul li {
+	list-style: none;
+}
+body ul li {
+	list-style: none;
+}
+form fieldset ul li {
+	list-style: none;
+}
+div ul li {
+	list-style: none;
+}
+form fieldset ul input {
+	border: 1px solid black;
+	background: lightgrey;
+}
+form fieldset ul textarea {
+	border: 1px solid black;
+	background: lightgrey;
+}
+form fieldset ul select {
+	border: 1px solid black;
+	background: lightgrey;
+}
+#gridImg .ui-block {
+	height: 100px;
+}
+#browseSz {
+	width: 275px;
+	align: center;
+}
+#ctaimg {
+	width: 275px;
+	align: center;
+}
+#brandImg {
+	width: 275px;
+}
+#billTypeImg {
+	Height: 90px;
+}
+#dueDateImg {
+	Height: 90px;
+}
+#paymentStatusImg {
+	width: 90px;
+}
+#priorityImg {
+	Height: 90px;
+}
+#frequencyImg 
+	Height: 90px;
+}
+#paymentTypeImg {
+	Height: 90px;
+}
+#imgSize1 {
+	Height: 75px;
+}
+#imgSize2 {
+	Height: 75px;
+}
+#imgSize3 {
+	Height: 75px;
+}
+#imgSize4 {
+	Height: 75px;
+}
+#imgSize5 {
+	Height: 75px;
+}
+#freq {
+	display: inline;
+} 
+#freqs 
+	display: inline;
+} 
+div {
+	list-style: none;
+	border: 1px solid black;	
+	background: white;
+	padding: 10px 10px 10px 10px;
+	list-style: none;	
+}
+#addNewBill {
+	display: none
+}
+p.padding {
+	padding:0px 65px 100px 65px;
+}
+.errors {
+	color: red;
+	border: 1px solid red;
+}
+h2 {
+	align: center;
+}
+#saveMe {
+	background: darkgreen;
+}
+#bill {
+	list-style: none;
+	border: 1px solid black;	
+	background: white;
+	padding: 10px 10px 10px 10px;	
+}
+#resetMe {
+	background: darkred;
+}
+#back {
+	background: grey;
+}
+#editBill {
+	background: green;
+}
+#delBill {
+	background: red;
+}
+input.hasFocus {
+	border: 2px solid darkblue;
+}
+textarea.hasFocus {
+	border: 2px solid darkblue;
+}
+.star {
+	color: red;
+	display: inline;
+}
+[type = "radio"] {
+	border: none;
+	width: inherit;
+}
+[type = "checkbox"] {
+	border: none;
+	width: inherit;
+}
+
+a:link {
+	color: green;
+}
+a:visited {
+	color: aqua;
+}
+a:hover {
+	color: gray;
+}
+a:active {
+	color: black;
+}

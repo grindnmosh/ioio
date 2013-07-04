@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<!-- 
+Robert Warren
+Term 1304
+Mobile Interface and Usability (MIU)
+I Owe, I Owe * Bill List
+
+Dropbox: https://www.dropbox.com/sh/03yhmwxv5pmms41/4XEl9oEfZ8
+Github: https://github.com/grindnmosh/Warren_Robert_1304_MIU_Part_2.git
+URL: http://grind-design.com
+-->
+<html>
+	<head>
+		<title>I Owe, I Owe * Bill List</title>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/themes/grind-theme.min.css" />
+		<link rel="stylesheet" href="css/index.css" type= "text/css" />
+		<script src= "js/libs/modernizr.custom.min.js"></script>
+		<meta charset="UTF-8" />
+		<!--<meta name="viewport" content="target-densitydpi=device-dpi" />-->
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description" content="A simple way to track your bills." />
+		<meta name="keywords" content="bills, paid, unpaid, bill types, bill list" />
+		<meta name="robots" content="index, follow" />
+	</head>
+	
+	<body>
+		<div data-role="page" data-theme="a" id="home" >
+			<div data-role="panel" data-position-fixed="false" data-display="overlay" data-theme="d" id="home-panel">
+		        <ul data-role="listview" data-theme="d" class="nav-search" data-filter="true" data-filter-placeholder="Filter Menu" data-inset="true">
+		            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+		            	<li data-theme="c">General</li>
+		                <li><a href="#home">Home</a></li>
+		                <li><a href="#add">Add A Bill</a></li>
+		                <li><a href="#view">View Bills</a></li>
+		                <li><a href="#news">Newsstream</a></li>
+		                <li><a href="#about">About App</a></li>
+		                <li data-theme="c">Browse</li>
+		                <li><a href="#toErr">Bill Type</a></li>
+		                <li><a href="#toErr">Due Date</a></li>
+		                <li><a href="#toErr">Payment Status</a></li>
+		                <li><a href="#toErr">Priority</a></li>
+		                <li><a href="#toErr">Frequency</a></li>
+		                <li><a href="#toErr">Payment Type</a></li>
+		                <li data-theme="c">Social</li>
+		                <li><a href = "https://twitter.com/grindnmosh">Follow Me</a></li>
+		                <li><a href = "https://www.facebook.com/grindnmosh">Like Me</a></li>
+		                <li><a href = "https://plus.google.com/115633683788706355406/">+1 Me</a></li>
+		        </ul>
+		    </div><!-- /panel -->
+			<div data-role="header" data-theme="a" data-position="fixed">
+					<h1><a href="#home"><img id="brandImg" src="img/brand.jpg" /></a></h1>
+					<a href="#home-panel" data-icon="grid" data-iconpos="notext"></a>
+			</div>
+			<div  data-role="content">
+				<h2><a href="#add" class="browse" id="cta"><img id="ctaimg" src="img/ctabg.png"></a></h2>
+				<h2><img id="browseSz"src="img/Browsemain.png" id="browseSz" /></h2>
+				<ul data-role="listview" data-theme="c" data-filter="true" data-filter-placeholder="Search Browsables" data-inset="true">
+					<li>
+	                	<a href="#toErr" class="browse" id="billType"><img id="billTypeImg" src="img/btypeimg.png" value="imgSize" />  
+	                    	<h3>Bill Type</h3>
+	                    	<p>What kind of bill is it?</p>
+	                    </a> 
+	                </li>
+	                <li>
+	                    <a href="#toErr" class="browse" id="dueDate"><img id="dueDateImg" src="img/dueimg.png" value="imgSize" />  
+	                      <h3>Due Date</h3>
+	                      <p>When is it due?</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#toErr" class="browse" id="paymentStatus"><img id="paymentStatusImg" src="img/paystatimg.png" value="imgSize" />  
+	                      <h3>Payment Status</h3>
+	                      <p>Is it paid?</p>
+	                    </a>
+					</li>
+					<li>
+	                    <a href="#toErr" class="browse" id="priority"><img id="priorityImg" src="img/prioimg.png" value="imgSize" />  
+	                    <h3>Priority</h3>
+	                    <p>How Important is it?</p></a>
+	                </li>
+	                <li>
+	                    <a href="#toErr" class="browse" id="frequency"><img id="frequencyImg" src="img/freqimg.png" value="imgSize" />  
+	                    <h3>Frequency</h3>
+	                    <p>How often is it due?</p></a>
+	                </li>
+	                <li>
+	                    <a href="#toErr" class="browse" id="paymentType"><img id="paymentTypeImg" src="img/payimg.png" value="imgSize" />  
+	                      <h3>Payment Type</h3>
+	                      <p>What did you pay with?</p>
+	                    </a>
+	                </li>
+				</ul>
+			</div>
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="https://twitter.com/grindnmosh" data-icon="gear">Follow Me</a></li>
+						<li><a href="#news" data-icon="info">News</a></li>
+						<li><a href="#about" data-icon="bars">About</a></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+
+				
+		<div data-role="page" data-theme="a" id="about" >
+			<div data-role="panel" data-position-fixed="false" data-display="overlay" data-theme="d" id="about-panel">
+		        <ul data-role="listview" data-theme="d" class="nav-search" data-filter="true" data-filter-placeholder="Filter Menu" data-inset="true">
+		            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+		            	<li data-theme="c">General</li>
+		                <li><a href="#home">Home</a></li>
+		                <li><a href="#add">Add A Bill</a></li>
+		                <li><a href="#view">View Bills</a></li>
+		                <li><a href="#news">Newsstream</a></li>
+		                <li><a href="#about">About App</a></li>
+		                <li data-theme="c">Browse</li>
+		                <li><a href="#toErr">Bill Type</a></li>
+		                <li><a href="#toErr">Due Date</a></li>
+		                <li><a href="#toErr">Payment Status</a></li>
+		                <li><a href="#toErr">Priority</a></li>
+		                <li><a href="#toErr">Frequency</a></li>
+		                <li><a href="#toErr">Payment Type</a></li>
+		                <li data-theme="c">Social</li>
+		                <li><a href = "https://twitter.com/grindnmosh">Follow Me</a></li>
+		                <li><a href = "https://www.facebook.com/grindnmosh">Like Me</a></li>
+		                <li><a href = "https://plus.google.com/115633683788706355406/">+1 Me</a></li>
+		        </ul>
+		    </div><!-- /panel -->
+			<div data-role="header" data-theme="a" data-position="fixed">
+					<h1><a href="#home"><img id="brandImg" src="img/brand.jpg" /></a></h1>
+					<a href="#about-panel" data-icon="grid" data-iconpos="notext"></a>
+			</div>
+			<div  data-role="content">
+				<h2>Grind-Design projects for Full Sail</h2>
+				<p>Designer:  Robert Warren</p>
+				
+				<div data-role="collapsible" data-theme="d" data-collapsed="true">
+					<h3>Source</h3>
+					<p> Follow my <a href = "https://github.com/grindnmosh/Warren_Robert_1304_MIU_Part_2.git">github</a> for updates </p>
+				</div>
+				
+				<div data-role="collapsible" data-theme="d" data-collapsed="true">
+					<h3>Social Networks</h3>
+					<p>Follow me on <a href = "https://twitter.com/grindnmosh">Twitter</a></p>
+					<p>Like Me on <a href = "https://www.facebook.com/grindnmosh">Facebook</a></p>
+					<p>+1 Me on <a href = "https://plus.google.com/115633683788706355406/">Google+</a></p>
+				</div>
+	
+				<div data-role="collapsible" data-theme="d" data-collapsed="true">
+					<h3>Contact Info</h3>
+					<h4>For Bug and Error Reports:</h4>
+					<p>bugreports@grind-design.com</p>
+					<h4>Suggestions:</h4>
+					<p>suggestions@grind-design.com</p>
+					<h4>Site Issues:</h4>
+					<p>admin@grind-design.com</p>
+					<h4>Contact the Developer:</h4>
+					<p>grindnmosh@grind-design.com</p>
+				</div>
+				
+				<div data-role="collapsible" data-theme="d" data-collapsed="true" >
+					<h3>Credits</h3>
+					<p>Hand Giving Money To Other Hand Image courtesy of creativedoxfoto/FreeDigitalPhotos.net</p>
+				</div>
+				
+				<div data-role="collapsible" data-theme="d" data-collapsed="true">
+					<h3>App Versions</h3>
+					Bronze Links:
+					<p><a href = "http://grind-design.co.nf">Bronze URL</a></p>
+					<p><a href = "https://www.dropbox.com/sh/ehx8ny2idvpjoe0/hg-9dzI9Jx">Bronze Dropbox</a></p>
+					<p><a href = "https://github.com/grindnmosh/Warren_Robert_1304_MIU_Part_2/tree/gh-pages/bronze">Bronze gh-pages</a></p>
+					<p><a href = "https://github.com/grindnmosh/Warren_Robert_1304_MIU_Part_2/tree/master/bronze">Bronze Master</a></p>
+					
+					Gold Links:
+					<p><a href = "http://grind-design.com">Gold URL</a></p>
+					<p><a href = "https://www.dropbox.com/sh/7idhb6ag3of96yv/YKoKug1zIr">Gold Dropbox</a></p>
+					<p><a href = "https://github.com/grindnmosh/Warren_Robert_1304_MIU_Part_2/tree/gh-pages/gold">Gold gh-pages</a></p>
+					<p><a href = "https://github.com/grindnmosh/Warren_Robert_1304_MIU_Part_2/tree/master/gold">Gold Master</a></p>
+				</div>
+			</div>
+		
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="https://twitter.com/grindnmosh" data-icon="gear">Follow Me</a></li>
+						<li><a href="#news" data-icon="info">News</a></li>
+						<li><a href="#about" data-icon="bars">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	
+		<div data-role="page" data-theme="a" id="news" >
+			<div data-role="panel" data-position-fixed="false" data-display="overlay" data-theme="d" id="news-panel">
+		        <ul data-role="listview" data-theme="d" class="nav-search" data-filter="true" data-filter-placeholder="Filter Menu" data-inset="true">
+		            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+		            	<li data-theme="c">General</li>
+		                <li><a href="#home">Home</a></li>
+		                <li><a href="#add">Add A Bill</a></li>
+		                <li><a href="#view">View Bills</a></li>
+		                <li><a href="#news">Newsstream</a></li>
+		                <li><a href="#about">About App</a></li>
+		                <li data-theme="c">Browse</li>
+		                <li><a href="#toErr">Bill Type</a></li>
+		                <li><a href="#toErr">Due Date</a></li>
+		                <li><a href="#toErr">Payment Status</a></li>
+		                <li><a href="#toErr">Priority</a></li>
+		                <li><a href="#toErr">Frequency</a></li>
+		                <li><a href="#toErr">Payment Type</a></li>
+		                <li data-theme="c">Social</li>
+		                <li><a href = "https://twitter.com/grindnmosh">Follow Me</a></li>
+		                <li><a href = "https://www.facebook.com/grindnmosh">Like Me</a></li>
+		                <li><a href = "https://plus.google.com/115633683788706355406/">+1 Me</a></li>
+		        </ul>
+		    </div><!-- /panel -->
+			<div data-role="header" data-theme="a" data-position="fixed">
+					<h1><a href="#home"><img id="brandImg" src="img/brand.jpg" /></a></h1>
+					<a href="#news-panel" data-icon="grid" data-iconpos="notext"></a>
+			</div>
+			<div data-role="content">
+				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search Bills..." data-inset="true">
+					<div data-role="collapsible" data-theme="d" data-collapsed="true">
+						<img src="img/Utilities.jpg" id="imgSize1" value="imgSize" />
+						<h3>Bill Due Date: 2013-04-23</h3>
+						<li>Bill Type: Utilities</li>
+						<li>Bill Name: SRP</li>
+						<li>Bill Priority: 5</li>
+						<li>Bill Amount: $68.00</li>
+						<li>Bill Frequency: monthly</li>
+						<li>Paid: UnPaid</li>
+						<li>Paid With: N/A</li>
+						<li>On Time?: N/A</li>
+						<li>Late?: N/A</li>
+						<li>Late Fee?: N/A</li>
+						<li>comments: Pay extra 30 to help with higher summer bills.</li>
+					</div>
+					<div data-role="collapsible" data-theme="d" data-collapsed="true">
+						<img id="imgSize2" src="img/Utilities.jpg" value="imgSize" />
+						<h3>Bill Due Date: 2013-04-26</h3>
+						<li>Bill Type: Utilities</li>
+						<li>Bill Name: City of Mesa</li>
+						<li>Bill Priority: 4</li>
+						<li>Bill Amount: $96.00</li>
+						<li>Bill Frequency: monthly</li>
+						<li>Paid: UnPaid</li>
+						<li>Paid With: N/A</li>
+						<li>On Time?: N/A</li>
+						<li>Late?: N/A</li>
+						<li>Late Fee?: N/A</li>
+						<li>comments: </li>
+					</div>
+					<div data-role="collapsible" data-theme="d" data-collapsed="true">
+						<img id="imgSize3" src="img/Vehicle.jpg" value="imgSize" />
+						<h3>Bill Due Date: 2013-04-27</h3>
+						<li>Bill Type: Vehicle</li>
+						<li>Bill Name: Hyundai Elantra</li>
+						<li>Bill Priority: 5</li>
+						<li>Bill Amount: $220.00</li>
+						<li>Bill Frequency: monthly</li>
+						<li>Paid: UnPaid</li>
+						<li>Paid With: N/A</li>
+						<li>On Time?: N/A</li>
+						<li>Late?: N/A</li>
+						<li>Late Fee?: N/A</li>
+						<li>comments: Wife’s Car</li>
+					</div>
+					<div data-role="collapsible" data-theme="d" data-collapsed="true">
+						<img id="imgSize4" src="img/Vehicle.jpg" value="imgSize" />
+						<h3>Bill Due Date: 2013-04-27</h3>
+						<li>Bill Type: Vehicle</li>
+						<li>Bill Name: Registration Hyundai Elantra</li>
+						<li>Bill Priority: 5</li>
+						<li>Bill Amount: $56.00</li>
+						<li>Bill Frequency: annually</li>
+						<li>Paid: UnPaid</li>
+						<li>Paid With: N/A</li>
+						<li>On Time?: N/A</li>
+						<li>Late?: N/A</li>
+						<li>Late Fee?: N/A</li>
+						<li>comments: Wife’s Car 1 year registration.</li>
+					</div>
+					<div data-role="collapsible" data-theme="d" data-collapsed="true" data-collapsed="true">
+						<img id="imgSize5" src="img/Housing.jpg" value="imgSize" />		
+						<h3>Bill Due Date: 2013-05-01</h3>
+						<li>Bill Type: Housing</li>
+						<li>Bill Name: Rent</li>
+						<li>Bill Priority: 5</li>
+						<li>Bill Amount: $850.00</li>
+						<li>Bill Frequency: monthly</li>
+						<li>Paid: UnPaid</li>
+						<li>Paid With: N/A</li>
+						<li>On Time?: N/A</li>
+						<li>Late?: N/A</li>
+						<li>Late Fee?: N/A</li>
+						<li>comments: Pay via online portal.</li>
+					</div>
+				</ul>
+			</div>
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="https://twitter.com/grindnmosh" data-icon="gear">Follow Me</a></li>
+						<li><a href="#news" data-icon="info">News</a></li>
+						<li><a href="#about" data-icon="bars">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div data-role="dialog" id="errors" >
+			
+			<div data-role="header" data-position="fixed">
+				<h1>Missing Fields</h1>
+			</div>		
+			<div data-role="content">
+				<ul>
+				</ul>
+			</div>
+		</div>
+		
+
+		<div data-role="page" data-theme="a" id="toErr" >
+			<div data-role="panel" data-position-fixed="false" data-display="overlay" data-theme="d" id="err-panel">
+		        <ul data-role="listview" data-theme="d" class="nav-search" data-filter="true" data-filter-placeholder="Filter Menu" data-inset="true">
+		            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+		            	<li data-theme="c">General</li>
+		                <li><a href="#home">Home</a></li>
+		                <li><a href="#add">Add A Bill</a></li>
+		                <li><a href="#view">View Bills</a></li>
+		                <li><a href="#news">Newsstream</a></li>
+		                <li><a href="#about">About App</a></li>
+		                <li data-theme="c">Browse</li>
+		                <li><a href="#toErr">Bill Type</a></li>
+		                <li><a href="#toErr">Due Date</a></li>
+		                <li><a href="#toErr">Payment Status</a></li>
+		                <li><a href="#toErr">Priority</a></li>
+		                <li><a href="#toErr">Frequency</a></li>
+		                <li><a href="#toErr">Payment Type</a></li>
+		                <li data-theme="c">Social</li>
+		                <li><a href = "https://twitter.com/grindnmosh">Follow Me</a></li>
+		                <li><a href = "https://www.facebook.com/grindnmosh">Like Me</a></li>
+		                <li><a href = "https://plus.google.com/115633683788706355406/">+1 Me</a></li>
+		        </ul>
+		    </div><!-- /panel -->
+			<div data-role="header" data-theme="a" data-position="fixed">
+					<h1><a href="#home"><img id="brandImg" src="img/brand.jpg" /></a></h1>
+					<a href="#err-panel" data-icon="grid" data-iconpos="notext"></a>
+			</div>
+			<div data-role="content">
+				<div data-role="fieldcontain">
+					<h2>The page cannot be found!</h2>
+				</div>
+				<div data-role="fieldcontain">
+					<h3>The page you have requested cannot be found on this server.</h3>
+				</div>
+				<div data-role="fieldcontain">	
+					<p>This is in place temporarily till I can link specific items in local storage.</p>
+				</div>
+				<div data-role="fieldcontain">
+					<p>THIS PAGE IS HERE INTENTIONALLY</p>
+				</div>
+				<div data-role="fieldcontain">
+					HTTP 404 - File Not Found
+				</div>
+				<div data-role="fieldcontain">	
+					<a href = "#home"><input type="button" value="Back" id="back"/></a>
+				</div>
+			</div>
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="https://twitter.com/grindnmosh" data-icon="gear">Follow Me</a></li>
+						<li><a href="#news" data-icon="info">News</a></li>
+						<li><a href="#about" data-icon="bars">About</a></li>
+					</ul>
+				</div>	
+			</div>	
+		</div>
+		
+		
+		
+		<div data-role="page" data-theme="a" id="view" >
+			<div data-role="panel" data-position-fixed="false" data-display="overlay" data-theme="d" id="view-panel">
+		        <ul data-role="listview" data-theme="d" class="nav-search" data-filter="true" data-filter-placeholder="Filter Menu" data-inset="true">
+		            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+		            	<li data-theme="c">General</li>
+		                <li><a href="#home">Home</a></li>
+		                <li><a href="#add">Add A Bill</a></li>
+		                <li><a href="#view">View Bills</a></li>
+		                <li><a href="#news">Newsstream</a></li>
+		                <li><a href="#about">About App</a></li>
+		                <li data-theme="c">Browse</li>
+		                <li><a href="#toErr">Bill Type</a></li>
+		                <li><a href="#toErr">Due Date</a></li>
+		                <li><a href="#toErr">Payment Status</a></li>
+		                <li><a href="#toErr">Priority</a></li>
+		                <li><a href="#toErr">Frequency</a></li>
+		                <li><a href="#toErr">Payment Type</a></li>
+		                <li data-theme="c">Social</li>
+		                <li><a href = "https://twitter.com/grindnmosh">Follow Me</a></li>
+		                <li><a href = "https://www.facebook.com/grindnmosh">Like Me</a></li>
+		                <li><a href = "https://plus.google.com/115633683788706355406/">+1 Me</a></li>
+		        </ul>
+		    </div><!-- /panel -->
+			<div data-role="header" data-theme="a" data-position="fixed">
+					<h1><a href="#home"><img id="brandImg" src="img/brand.jpg" /></a></h1>
+					<a href="#view-panel" data-icon="grid" data-iconpos="notext"></a>
+			</div>
+			<div id="display" data-theme="d" data-role="content">
+				<div>
+					<a href="#add" id="addNewBill"><input type="button" data-role="button" data-theme="d" data-icon="arrow-r" data-iconpos="right" value="Add Another Bill" /></a>
+				</div>
+				<div>
+					<input type="button" data-role="button" data-theme="b" data-icon="arrow-r" data-iconpos="right" value="Clear Storage" id="clearAllData"/>
+				</div>
+				<!--<div id="display" ></div>-->
+			</div>
+			<div data-role="footer" data-theme="d" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="https://twitter.com/grindnmosh" data-icon="gear">Follow Me</a></li>
+						<li><a href="#news" data-icon="info">News</a></li>
+						<li><a href="#about" data-icon="bars">About</a></li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+	
+	
+		<div data-role="page" id="add">
+			<div data-role="panel" data-position-fixed="false" data-display="overlay" data-theme="d" id="add-panel">
+		        <ul data-role="listview" data-theme="d" class="nav-search" data-filter="true" data-filter-placeholder="Filter Menu" data-inset="true">
+		            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+		            	<li data-theme="c">General</li>
+		                <li><a href="#home">Home</a></li>
+		                <li><a href="#add">Add A Bill</a></li>
+		                <li><a href="#view">View Bills</a></li>
+		                <li><a href="#news">Newsstream</a></li>
+		                <li><a href="#about">About App</a></li>
+		                <li data-theme="c">Browse</li>
+		                <li><a href="#toErr">Bill Type</a></li>
+		                <li><a href="#toErr">Due Date</a></li>
+		                <li><a href="#toErr">Payment Status</a></li>
+		                <li><a href="#toErr">Priority</a></li>
+		                <li><a href="#toErr">Frequency</a></li>
+		                <li><a href="#toErr">Payment Type</a></li>
+		                <li data-theme="c">Social</li>
+		                <li><a href = "https://twitter.com/grindnmosh">Follow Me</a></li>
+		                <li><a href = "https://www.facebook.com/grindnmosh">Like Me</a></li>
+		                <li><a href = "https://plus.google.com/115633683788706355406/">+1 Me</a></li>
+		        </ul>
+		    </div><!-- /panel -->
+			<div data-role="header" data-theme="a" data-position="fixed">
+					<h1><a href="#home"><img id="brandImg" src="img/brand.jpg" /></a></h1>
+					<a href="#add-panel" data-icon="grid" data-iconpos="notext"></a>
+			</div>
+			<div  data-role="content" data-theme="a" id="addFormEdits">
+	    		<form action="" id="addBill">
+		    		<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup" id="top">
+							<h2>Add A New Bill</h2>
+							<div id="centered">Fields marked with <p class="star">*</p> are required fields.</div>
+							<div data-role="fieldcontain">
+						    	<label for="btype"><p class="star">*</p> Bill Type</label>
+						    	<legend><p class="star">*</p> Bill Type</legend>
+						    	<select name="btype" id="btype" data-theme="d" class="required"  data-native-menu="false">
+							        <option data-placeholder="true" value>--Choose Bill Type--</option>
+									<option value="Housing">Housing</option>								
+									<option value="Vehicle">Vehicle</option>
+									<option value="Utilities">Utilities</option>
+									<option value="Personal">Personal</option>
+									<option value="Education">Education</option>
+									<option value="Business">Business</option>
+									<option value="Other">Other</option>
+								</select>
+								<p class="inputHints">Please select bill category</p>
+							</div>
+							<div data-role="fieldcontain">
+								<label for="bname" ><p class="star">*</p> Bill Name</label>
+							    <input type="text"  data-clear-btn="true" name="bname" id="bname" class="required" placeholder="Elec, Car, Netflix, etc" value="">
+							    <p class="inputHints">This is where you name your bill</p>
+							</div>
+							<div data-role="fieldcontain">
+						        <label for="prio">Priority</label>
+						        <input type="range" data-theme="d" id="prio"  min="0" max="10" value="5">
+						        <p class="inputHints">Priority: Low_______________________High</p>
+							</div>
+							<div data-role="fieldcontain">
+								<label for="amt"><p class="star">*</p> Amount</label>
+								<input type="text" data-clear-btn="true" name="amt" id="amt" class="required number"  placeholder="150.00" />
+								<p class="inputHints">Please enter bill amount in 100.00 format</p>
+							</div>
+							<div data-role="fieldcontain">
+								<label for="due"><p class="star">*</p> Due Date</label>
+								<input type="date" name="due" id="due" class="required date"  />
+								<p class="inputHints">Please enter the bill due date</p>
+							</div>
+							<div data-role="fieldcontain">
+								<label for="freqs"><p class="star">*</p> frequency</label>
+								<legend><p class="star">*</p> frequency</legend>
+								<select name="freqs" id="freqs" class="required" data-theme="d" data-native-menu="false">
+							        <option data-placeholder="true" value>--Choose Frequency--</option>
+									<option value="One Time">One Time</option>								
+									<option value="Weekly">Weekly</option>
+									<option value="Bi-Weekl">Bi-Weekly</option>
+									<option value="Monthly" selected="selected">Monthly</option>
+									<option value="Quarterly">Quarterly</option>
+									<option value="Annually">Annually</option>
+									<option value="Other">Other</option>
+								</select>
+								<p class="inputHints">Please select the frequency of this bill</p>
+							</div>
+							<input type="hidden" name="billNumber" id="billNumber" value="00001" />
+							<input type="hidden" name="timeSaved" id="timeSaved" value="currentTime" />
+						</fieldset>
+		    		</div>
+		    		<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend><p class="star">*</p> Payment Status</legend>
+						    <input type="radio" data-theme="d" checked value="UnPaid" name="status" id="unpd" class="Unpaid" />
+						    <label for="unpd">UnPaid</label>
+						    <input type="radio" data-theme="d" value="Paid" name="status" id="pd" class="Unpaid" />
+						    <label for="pd">Paid</label>
+						    <p class="inputHints">Please select payment status</p>	
+				    	</fieldset>
+				    	<ol id="effect" class="formset">
+					    	<h2>Paid Bill Information:</h2>
+			  			   	<select name="pdwith" id="pdwith" data-theme="d" data-native-menu="false">
+								<option data-placeholder="true" value>--Choose Payment Type--</option>
+								<optgroup label="Cash Payment Types">		
+									<option value="Debit Card">Debit Card</option>
+									<option value="Cash">Cash</option>
+									<option value="Check">Check</option>
+								</optgroup>
+								<optgroup label="Credit Cards">
+									<option value="MasterCard">MasterCard</option>
+									<option value="Visa">Visa</option>
+									<option value="Discover">Discover</option>
+									<option value="American Express">American Express</option>
+									<option value="Other Card">Other Card</option>
+								</optgroup>									
+							</select>
+							<p class="inputHints">Please select payment method if applicable</p>
+			    		
+				    		<div data-role="fieldcontain">
+							    <fieldset data-role="controlgroup">
+							        <legend>Payment Time</legend>
+							        <input type="checkbox" name="paymentTime" id="ontime" data-theme="d" value-"On Time">
+							        <label for="ontime" >On Time</label>
+							        <input type="checkbox" name="paymentTime" id="late" data-theme="d" value="Late">
+							        <label for="late" >Late</label>
+							        <input type="checkbox" name="paymentTime" id="lfee" data-theme="d" value="Late Fee">
+							        <label for="lfee" >Late Fee</label>
+							        <p class="inputHints">Please select all that apply</p>
+							    </fieldset>
+				    		</div>
+				    	</ol>
+		    		</div>
+				    <div data-role="fieldcontain">
+					    <label for="textArea">Comments</label>
+					    <div><textarea id="textArea"></textarea></div>
+				    </div>
+				    <div data-role="fieldcontain">
+						<input type="submit" name="saveMe" id="saveMe" data-theme="d" value="Save Me" data-role="button" data-icon="arrow-r" data-iconpos="right" />
+				    </div>
+			    	<div data-role="fieldcontain">
+						<input type="reset" name="resetMe" id="resetMe" data-theme="b" data-role="button" data-icon="arrow-r" data-iconpos="right" value="Reset Me" />
+			    	</div>
+				    <div data-role="fieldcontain">
+						<a href = "#view" id="displayLink"><input type="button" data-theme="a" data-role="button" data-icon="arrow-r" data-iconpos="right" value="Display Bills" /></a>
+					</div>
+				    <a href="#errors" id="abErrors" data-rel="dialog" data-transition="pop">Open Errors</a>
+			    </div>
+			</form>
+	    	<div data-role="footer" data-theme="d" data-position="fixed" id="footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="https://twitter.com/grindnmosh" data-icon="gear">Follow Me</a></li>
+						<li><a href="#news" data-icon="info">News</a></li>
+						<li><a href="#about" data-icon="bars">About</a></li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/json.js"></script>
+		
+		
+	</body>
+</html>
